@@ -1,28 +1,35 @@
-# include Z
-. ~/z.sh
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# https://github.com/nvbn/thefuck
-eval $(thefuck --alias)
+# python
+export PYTHONPATH=/Library/Frameworks/Python.framework/Versions/3.9/bin/python3
 
+# ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+export GEM_HOME="$HOME/.gem"
+
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/lbrandon/.oh-my-zsh"
+
+# nvm/npm
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
-
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-export PATH=~/Development/Telstra/misc-tools:/Users/laurabrandon/Library/Python/2.7/bin:$PATH
 
 # direnv
 eval "$(direnv hook zsh)"
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# git
+export GPG_TTY=$(tty)
+eval "$(hub alias -s)"
 
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/laurabrandon/.oh-my-zsh"
+# Shell Integration
+source ~/.iterm2_shell_integration.zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
@@ -33,12 +40,61 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="dd/mm/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
   bundler
   dotenv
-  osx
+  macos
   zsh-autosuggestions
   node
   npm
@@ -64,9 +120,6 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -76,4 +129,26 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias gs="git status"
+alias gcol="git checkout -"
+alias gcob="git checkout -b "
+alias gcom="git checkout master"
+alias gcoma="git checkout main"
+alias gp="git pull"
+alias gpr="git pull --rebase"
+alias gca="git commit --am"
+alias gst="git stash"
+alias gstp="git stash pop"
+alias gstl="git stash list"
+alias gl="git log"
 alias gitcleanup='git branch | grep -v "master\|develop\|\*" | xargs git branch -D'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/lbrandon/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/lbrandon/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/lbrandon/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/lbrandon/google-cloud-sdk/completion.zsh.inc'; fi
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+alias python=/usr/local/bin/python3.9
